@@ -14,6 +14,7 @@ export const setHtmlResponse = (
     </head>
     <body>
       <div id="app">${html}</div>
+      <script src="bundle.js" type="text/javascript" ></script>
     </body>
   </html>
   `;
