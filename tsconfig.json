@@ -1,14 +1,24 @@
 {
   "compilerOptions": {
     "outDir": "dist",
-    "target": "ES5",
-    "module": "ES6",
+    "target": "es2019",
+    "module": "commonjs",
     "jsx": "react",
     "noImplicitAny": true,
     "allowSyntheticDefaultImports": true,
     "moduleResolution": "node",
     "baseUrl": "./",
     "allowJs": true,
-    "paths": {}
-  }
+    "strict": true,
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "noEmit": false,
+    "paths": {},
+    // Ensure that .d.ts files are created by tsc, but not .js files
+    "declaration": true,
+    "emitDeclarationOnly": true
+    // Ensure that Babel can safely transpile files in the TypeScript project
+    // "isolatedModules": true
+  },
+  "include": ["src/**/*.ts", "src/**/*.tsx"]
 }
