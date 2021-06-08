@@ -6,6 +6,7 @@
   grid-template-columns: repeat(12, 1fr);
   grid-template-rows: 1fr;
   gap: 0.2rem;
+  padding: 0.5rem;
 }
 
 .Layout__container .Logo__container {
@@ -14,7 +15,6 @@
 }
 
 .Layout__container .Searcher__container {
-  border: salmon solid;
   grid-column: 3 / 12;
   grid-row: 1;
 }
