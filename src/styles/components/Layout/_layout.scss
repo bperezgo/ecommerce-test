@@ -2,10 +2,23 @@
   width: 100%;
   background-color: $base-color;
   display: grid;
+  align-items: center;
   grid-template-columns: repeat(12, 1fr);
-  gap: 0.5rem;
+  grid-template-rows: 1fr;
+  gap: 0.2rem;
 }
 
-.Layout__container-height {
-  height: 2rem;
+.Layout__container .Logo__container {
+  grid-column: 2 / 3;
+  grid-row: 1;
 }
+
+.Layout__container .Searcher__container {
+  border: salmon solid;
+  grid-column: 3 / 12;
+  grid-row: 1;
+}
+
+// .Layout__container-height {
+//   height: 2rem;
+// }

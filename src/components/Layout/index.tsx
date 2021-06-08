@@ -9,7 +9,7 @@ type LayoutProps = {
 export const Layout = ({ children }: LayoutProps) => {
   return (
     <>
-      <div className="Layout__container Layout__container-height">
+      <div className="Layout__container">
         <Logo />
         <Searcher />
       </div>

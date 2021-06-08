@@ -4,7 +4,7 @@ import logo from '@assets/images/Logo_ML.png';
 
 export const Logo = () => {
   return (
-    <div>
+    <div className="Logo__container">
       <Link to="/">
         <img src={logo} alt="mercadolibre" />
       </Link>
