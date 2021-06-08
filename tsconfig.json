@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "typeRoots": ["node_modules/@types", "src/types"],
     "outDir": "dist",
     "target": "es2019",
     "module": "commonjs",
@@ -13,7 +14,10 @@
     "resolveJsonModule": true,
     "esModuleInterop": true,
     "noEmit": false,
-    "paths": {},
+    "paths": {
+      "@assets/*": ["./src/assets/*"],
+      "@components/*": ["./src/components/*"]
+    },
     // Ensure that .d.ts files are created by tsc, but not .js files
     "declaration": true,
     "emitDeclarationOnly": true

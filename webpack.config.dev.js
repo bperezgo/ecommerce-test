@@ -2,15 +2,17 @@ import { resolve, join } from 'path';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import { CleanWebpackPlugin } from 'clean-webpack-plugin';
 import { HotModuleReplacementPlugin } from 'webpack';
+import { moduleResolve } from './shared.config';
+import ImageMinimizerPlugin from 'image-minimizer-webpack-plugin';
 
 const config = {
   entry: [
     'react-hot-loader/patch',
-    'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=2000&reload=true',
+    'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=4000&reload=true',
     './src/index.tsx',
   ],
   resolve: {
-    extensions: ['.tsx', '.ts', '.js'],
+    ...moduleResolve,
   },
   output: {
     filename: 'bundle.js',
@@ -33,7 +35,7 @@ const config = {
         include: resolve(process.cwd(), 'src'),
       },
       {
-        test: /\.(s*)css$/,
+        test: /\.(s?)css$/,
         use: [
           {
             loader: MiniCssExtractPlugin.loader,
@@ -43,19 +45,31 @@ const config = {
         ],
       },
       {
-        test: /\.(png|gif|jpg)$/,
+        test: /\.(png|gif|jpe?g)$/,
+        // type: 'asset',
         use: [
           {
             loader: 'file-loader',
             options: {
-              name: 'assets/[hash].[ext]',
+              name: 'assets/[path][name].[ext]',
             },
           },
         ],
       },
     ],
   },
-  plugins: [new CleanWebpackPlugin(), new HotModuleReplacementPlugin()],
+  plugins: [
+    new MiniCssExtractPlugin({
+      filename: 'assets/styles.css',
+    }),
+    new CleanWebpackPlugin(),
+    new HotModuleReplacementPlugin(),
+    new ImageMinimizerPlugin({
+      minimizerOptions: {
+        plugins: [['optipng', { optimizationLevel: 5 }]],
+      },
+    }),
+  ],
   devServer: {
     historyApiFallback: true,
     contentBase: join(__dirname, 'dist'),

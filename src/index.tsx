@@ -1,3 +1,6 @@
+import './styles/main.scss';
+import './index.css';
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Router } from 'react-router';

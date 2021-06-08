@@ -1,0 +1,11 @@
+.Layout__container {
+  width: 100%;
+  background-color: $base-color;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 0.5rem;
+}
+
+.Layout__container-height {
+  height: 2rem;
+}
