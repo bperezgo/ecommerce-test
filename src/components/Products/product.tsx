@@ -7,6 +7,7 @@ export const Product = ({
   picture,
   price,
   title,
+  free_shipping,
 }: ProductsResponse.Item) => {
   return (
     <div className="Product__container">
@@ -14,9 +15,12 @@ export const Product = ({
         <img src={picture} alt={id} />
       </div>
       <div className="Product__description">
-        <p className="Product__price">
-          {formatPrice(price.amount, price.currency)}
-        </p>
+        <div className="Product__price">
+          <p>{formatPrice(price.amount, price.currency)}</p>
+          {free_shipping && (
+            <img src={'assets/ic_shipping.png'} alt="shipping" />
+          )}
+        </div>
         <p className="Product__title">{title}</p>
         <p className="Product__title">Completo único</p>
       </div>

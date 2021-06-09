@@ -32,7 +32,14 @@
 }
 
 .Product__price {
+  display: flex;
+  flex-direction: row;
   font-size: $price-font-size;
+}
+
+.Product__price > img {
+  height: 100%;
+  margin: 1.7rem 1rem;
 }
 
 .Product__title {

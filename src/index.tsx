@@ -5,6 +5,7 @@ import ReactDOM from 'react-dom';
 import { Router } from 'react-router';
 import { App } from './routes/App';
 import { createBrowserHistory } from 'history';
+import './images';
 
 const history = createBrowserHistory();
 

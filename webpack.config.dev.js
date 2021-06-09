@@ -51,12 +51,11 @@ const config = {
       },
       {
         test: /\.(png|gif|jpe?g)$/,
-        // type: 'asset',
         use: [
           {
             loader: 'file-loader',
             options: {
-              name: 'assets/[path][name].[ext]',
+              name: 'assets/[name].[ext]',
             },
           },
         ],
