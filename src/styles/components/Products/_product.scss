@@ -2,7 +2,7 @@
   display: grid;
   grid-template-columns: repeat(10, 1fr);
   grid-template-rows: 1fr;
-  gap: 16px;
+  gap: 1rem;
   box-shadow: 0 1px 0 rgba(0, 0, 0, 0.09);
   margin: 0 1rem;
   cursor: pointer;
@@ -12,8 +12,9 @@
   height: 180px;
   width: 180px;
   border-radius: 4px;
-  grid-column: 1 / 2;
-  margin: 16px;
+  grid-column: 1 / 3;
+  grid-row: 1;
+  margin: 1rem 0rem;
 }
 
 .Product__img_block > img {
@@ -25,8 +26,9 @@
 }
 
 .Product__description {
-  margin-top: 2rem;
-  grid-column: 2 / 11;
+  margin: 1rem;
+  grid-column: 3 / 11;
+  grid-row: 1;
 }
 
 .Product__price {
@@ -35,4 +37,11 @@
 
 .Product__title {
   font-size: $description-font-size;
+}
+
+.Product__head_note {
+  grid-column: 9 / 10;
+  grid-row: 1;
+  font-size: $notes-font-size;
+  padding-top: 2rem;
 }

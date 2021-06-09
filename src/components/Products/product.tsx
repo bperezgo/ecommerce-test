@@ -15,7 +15,11 @@ export const Product = ({
       <div className="Product__description">
         <p className="Product__price">{price.amount}</p>
         <p className="Product__title">{title}</p>
+        <p className="Product__title">Completo único</p>
       </div>
+      <span className="Product__head_note">
+        <p>Alguna parte</p>
+      </span>
     </div>
   );
 };

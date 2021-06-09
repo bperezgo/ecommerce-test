@@ -22,7 +22,7 @@ export const Products = () => {
 
     getProducts();
   }, []);
-
+  console.log(products);
   return (
     <div className="Products__container">
       <div className="Products__modal">
