@@ -7,7 +7,7 @@ import webpackDevMiddleware from 'webpack-dev-middleware';
 import webpackHotMiddleware from 'webpack-hot-middleware';
 import { itemsRouter } from './routes/items.route';
 import { renderApp } from './renderApp';
-import { SERVER } from './constants';
+import { SERVER } from '../constants';
 
 const app = express();
 const compiler = webpack(webpackConfig);

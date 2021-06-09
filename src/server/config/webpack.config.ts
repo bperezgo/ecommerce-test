@@ -1,5 +1,5 @@
 import { Configuration } from 'webpack';
-import { SERVER } from '../constants/environment.contant';
+import { SERVER } from '../../constants/environment.contant';
 
 const config =
   SERVER.NODE_ENV === 'production'

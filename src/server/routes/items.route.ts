@@ -1,7 +1,7 @@
 import { MlSites, MlCategories } from '../../@types';
 import { Router } from 'express';
-import { api } from '../core/api';
-import { ML_API_URL, AUTHOR } from '../constants';
+import { api } from '../../core/api';
+import { ML_API_URL, AUTHOR } from '../../constants';
 import { amountAndDecimals, mostSearchedCategory } from '../../utils/server';
 
 export const itemsRouter = Router();
