@@ -5,8 +5,9 @@ export const Products = () => {
   const [products, setProducts] = useState([]);
   useEffect(() => {
     const getProducts = async () => {
-      await fetchApi.get('')
+      await fetchApi.get(`/api/items?q=${'ipod'}`)
     }
+    getProducts()
   }, []);
 
   return <div>Products</div>;

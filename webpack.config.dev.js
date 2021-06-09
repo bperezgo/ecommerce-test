@@ -1,7 +1,7 @@
 import { resolve, join } from 'path';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import { CleanWebpackPlugin } from 'clean-webpack-plugin';
-import { HotModuleReplacementPlugin } from 'webpack';
+import { HotModuleReplacementPlugin, DefinePlugin } from 'webpack';
 import { moduleResolve } from './shared.config';
 import ImageMinimizerPlugin from 'image-minimizer-webpack-plugin';
 
@@ -59,6 +59,10 @@ const config = {
     ],
   },
   plugins: [
+    new DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
+      'process.env.SERVER_HOST': JSON.stringify(process.env.SERVER_HOST),
+    }),
     new MiniCssExtractPlugin({
       filename: 'assets/styles.css',
     }),

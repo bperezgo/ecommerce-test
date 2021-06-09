@@ -1,6 +1,5 @@
 import { api } from '../core/api';
-import { SERVER } from '../constants';
 
-const fetchApi = api({ baseURL: SERVER.HOST });
+const fetchApi = api({ baseURL: process.env.SERVER_HOST });
 
 export default fetchApi;
