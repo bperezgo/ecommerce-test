@@ -1,7 +1,11 @@
 import { resolve, join } from 'path';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import { CleanWebpackPlugin } from 'clean-webpack-plugin';
-import { HotModuleReplacementPlugin, DefinePlugin } from 'webpack';
+import {
+  HotModuleReplacementPlugin,
+  DefinePlugin,
+  SourceMapDevToolPlugin,
+} from 'webpack';
 import { moduleResolve } from './shared.config';
 import ImageMinimizerPlugin from 'image-minimizer-webpack-plugin';
 
@@ -19,6 +23,7 @@ const config = {
     path: resolve(__dirname, 'dist'),
     publicPath: '/',
   },
+  devtool: 'eval-source-map',
   module: {
     rules: [
       {
@@ -59,6 +64,7 @@ const config = {
     ],
   },
   plugins: [
+    new SourceMapDevToolPlugin(),
     new DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
       'process.env.SERVER_HOST': JSON.stringify(process.env.SERVER_HOST),
