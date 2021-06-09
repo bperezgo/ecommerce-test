@@ -1,14 +1,36 @@
 import React, { useEffect, useState } from 'react';
+import { useHistory } from 'react-router-dom';
+import { Product } from '../components/Products/product';
 import fetchApi from '../fetchApi';
+import { ProductsResponse } from '../@types';
 
 export const Products = () => {
-  const [products, setProducts] = useState([]);
+  const history = useHistory();
+  const [products, setProducts] = useState<ProductsResponse.Item[]>([]);
   useEffect(() => {
+    const {
+      location: { state },
+    } = history;
     const getProducts = async () => {
-      await fetchApi.get(`/api/items?q=${'ipod'}`)
-    }
-    getProducts()
-  }, []);
+      if (state.searcherValue) {
+        const { data } = await fetchApi.get<ProductsResponse.Data>(
+          `/api/items?q=${state.searcherValue}`
+        );
+        console.log(data);
+        setProducts(data.items);
+      }
+    };
 
-  return <div>Products</div>;
+    getProducts();
+  }, []);
+  console.log('products');
+  console.log(products);
+
+  return (
+    <div>
+      {products.map((product) => (
+        <Product key={product.id} />
+      ))}
+    </div>
+  );
 };

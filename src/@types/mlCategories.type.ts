@@ -1,4 +1,4 @@
-export namespace MlCategories {
+export declare namespace MlCategories {
   export interface PathFromRoot {
     id: string;
     name: string;

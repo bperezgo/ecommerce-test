@@ -1,4 +1,4 @@
 export const amountAndDecimals = (price: string): number[] => {
-  const [num, decimal] = price.split('.');
-  return [num as unknown as number, decimal as unknown as number];
+  const [num = '0', decimal = '0'] = price.split('.');
+  return [parseInt(num, 10), parseInt(decimal, 10)];
 };

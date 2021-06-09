@@ -1,4 +1,4 @@
-export namespace MlSites {
+export declare module MlSites {
   export interface Shipping {
     free_shipping: boolean;
   }

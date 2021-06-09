@@ -1,4 +1,4 @@
-import { MlSites } from '@src/@types';
+import { MlSites } from '../../@types';
 
 export const mostSearchedCategory = (
   availableFilters: MlSites.AvailableFilter[]
