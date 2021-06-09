@@ -26,6 +26,7 @@ export const Products = () => {
   return (
     <div className="Products__container">
       <div className="Products__modal">
+        
         {products.map((product) => (
           <Product key={product.id} {...product} />
         ))}

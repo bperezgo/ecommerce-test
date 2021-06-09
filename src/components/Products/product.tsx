@@ -1,5 +1,6 @@
 import React from 'react';
 import { ProductsResponse } from '../../@types';
+import { formatPrice } from '../../utils/front';
 
 export const Product = ({
   id,
@@ -13,7 +14,9 @@ export const Product = ({
         <img src={picture} alt={id} />
       </div>
       <div className="Product__description">
-        <p className="Product__price">{price.amount}</p>
+        <p className="Product__price">
+          {formatPrice(price.amount, price.currency)}
+        </p>
         <p className="Product__title">{title}</p>
         <p className="Product__title">Completo único</p>
       </div>
