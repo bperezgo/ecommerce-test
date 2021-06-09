@@ -1,10 +1,10 @@
 .Products__container {
-  background-color: $light-gray;
+  background-color: $gray;
   display: grid;
   justify-content: center;
   grid-template-columns: repeat(12, 1fr);
   grid-template-rows: auto;
-  gap: 16px;
+  gap: 0px 16px;
 }
 
 .Products__modal {

@@ -1,0 +1,10 @@
+.Breadcrumb__block {
+  grid-column: 2 / 12;
+  grid-row: 1;
+}
+
+.Breadcrumb__block > p {
+  font-size: $breadcrumb-font-size;
+  color: $light-gray;
+  margin: 1rem 0;
+}
