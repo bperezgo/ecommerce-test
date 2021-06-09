@@ -5,6 +5,7 @@ import express from 'express';
 import webpack from 'webpack';
 import webpackDevMiddleware from 'webpack-dev-middleware';
 import webpackHotMiddleware from 'webpack-hot-middleware';
+import { itemsRouter } from './routes/items.route';
 import { renderApp } from './renderApp';
 import { SERVER } from './constants';
 
@@ -23,6 +24,9 @@ app.use(
     heartbeat: 2000,
   })
 );
+
+app.use(express.json());
+app.use('/api', itemsRouter);
 
 app.get('*', renderApp);
 

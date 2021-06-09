@@ -8,3 +8,10 @@ export const SERVER: Server = {
   NODE_ENV:
     process.env.NODE_ENV === 'production' ? 'production' : 'development',
 };
+
+export const ML_API_URL = process.env.ML_API_URL || '';
+
+export const AUTHOR = {
+  name: process.env.AUTHOR_NAME || '',
+  lastname: process.env.AUTHOR_LASTNAME || '',
+};
