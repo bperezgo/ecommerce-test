@@ -11,7 +11,7 @@ export declare module MlSites {
     condition: string;
     sold_quantity: number;
     // permalink is the image in the response
-    permalink: string;
+    thumbnail: string;
     shipping: Shipping;
     category_id: string;
   }

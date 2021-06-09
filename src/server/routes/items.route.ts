@@ -40,7 +40,7 @@ itemsRouter.get('/items', async (req, res, next) => {
           amount: amountAndDecimals(`${result.price}`)[0],
           decimals: amountAndDecimals(`${result.price}`)[1],
         },
-        picture: result.permalink,
+        picture: result.thumbnail,
         condition: result.condition,
         free_shipping: result.shipping.free_shipping,
       })),

@@ -16,21 +16,20 @@ export const Products = () => {
         const { data } = await fetchApi.get<ProductsResponse.Data>(
           `/api/items?q=${state.searcherValue}`
         );
-        console.log(data);
         setProducts(data.items);
       }
     };
 
     getProducts();
   }, []);
-  console.log('products');
-  console.log(products);
 
   return (
-    <div>
-      {products.map((product) => (
-        <Product key={product.id} />
-      ))}
+    <div className="Products__container">
+      <div className="Products__modal">
+        {products.map((product) => (
+          <Product key={product.id} {...product} />
+        ))}
+      </div>
     </div>
   );
 };
