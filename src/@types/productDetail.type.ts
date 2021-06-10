@@ -1,4 +1,4 @@
-export declare namespace ProductsResponse {
+export declare namespace ProductDetailResponse {
   export type Category = string;
   export interface Price {
     amount: number;
@@ -24,6 +24,7 @@ export declare namespace ProductsResponse {
   export interface Data {
     author: Author;
     categories: Category[];
-    items: Item[];
+    // Notice item is only an object
+    item: Item;
   }
 }
