@@ -1,4 +1,5 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 import { ProductsResponse } from '../../@types';
 import { formatPrice } from '../../utils/front';
 
@@ -9,8 +10,12 @@ export const Product = ({
   title,
   free_shipping,
 }: ProductsResponse.Item) => {
+  const history = useHistory();
+  const handleClick = (id: string) => {
+    history.push(`/items/${id}`);
+  };
   return (
-    <div className="Product__container">
+    <div className="Product__container" onClick={() => handleClick(id)}>
       <div className="Product__img_block">
         <img src={picture} alt={id} />
       </div>

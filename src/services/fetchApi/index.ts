@@ -1,4 +1,4 @@
-import { api } from '../core/api';
+import { api } from '../../core/api';
 
 const fetchApi = api({ baseURL: process.env.SERVER_HOST });
 
