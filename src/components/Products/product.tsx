@@ -17,7 +17,7 @@ export const Product = ({
   return (
     <div className="Product__container" onClick={() => handleClick(id)}>
       <div className="Product__img_block">
-        <img src={picture} alt={id} />
+        <img className="Globals__container_img" src={picture} alt={id} />
       </div>
       <div className="Product__description">
         <div className="Product__price">

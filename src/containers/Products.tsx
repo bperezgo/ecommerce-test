@@ -3,6 +3,7 @@ import { useHistory } from 'react-router-dom';
 import { Product } from '../components/Products/product';
 import { Breadcrumb } from '../components/Breadcrumb';
 import fetchApi from '../services/fetchApi';
+import { ProductList } from '../components/Products/ProductList';
 import { ProductsResponse } from '../@types';
 
 export const Products = () => {
@@ -29,9 +30,7 @@ export const Products = () => {
     <div className="Products__container">
       <Breadcrumb categories={categories} />
       <div className="Products__modal">
-        {products.map((product) => (
-          <Product key={product.id} {...product} />
-        ))}
+        <ProductList products={products} />
       </div>
     </div>
   );

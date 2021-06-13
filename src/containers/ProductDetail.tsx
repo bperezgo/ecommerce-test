@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Breadcrumb } from '../components/Breadcrumb';
+import { Button } from '../components/Button';
 import { useRouteMatch } from 'react-router-dom';
 import fetchApi from '../services/fetchApi';
 import { ProductDetailResponse } from '../@types';
+import { formatPrice } from '../utils/front';
 
 export const ProductDetail = () => {
   const [product, setProduct] = useState<Partial<ProductDetailResponse.Item>>(
@@ -24,12 +26,40 @@ export const ProductDetail = () => {
     };
     getItemInfo();
   });
-  const { picture } = product;
+  const {
+    picture,
+    description,
+    price,
+    title = '',
+    sold_quantity = '',
+    condition = '',
+  } = product;
   return (
-    <div>
-      <Breadcrumb categories={[]} />
-      <p>ProductDetail {itemId}</p>
-      {picture && <img src={picture} alt={itemId} />}
+    <div className="Products__container">
+      <Breadcrumb categories={['value1', 'value2']} />
+      <div className="Products__modal">
+        {picture && (
+          <div className="ProductDetail_img_block">
+            <img
+              className="Globals__container_img"
+              src={picture}
+              alt={itemId}
+            />
+          </div>
+        )}
+        <div className="ProductDetail__min_description">
+          <p>
+            {condition} - {sold_quantity} vendidas
+          </p>
+          <p>{title}</p>
+          <p>{price && formatPrice(price.amount, price.currency)}</p>
+          <Button message="comprar" />
+        </div>
+        <div className="ProductDetail__description">
+          <p>Descripción del producto</p>
+          <p>{description}</p>
+        </div>
+      </div>
     </div>
   );
 };
