@@ -1,13 +1,41 @@
+.ProductDetail {
+  line-height: 1;
+}
+
 .ProductDetail_img_block {
   height: 680px;
   width: 680px;
+  grid-column: 1 / 8;
+}
+
+.ProductDetail__container {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  gap: 2rem;
 }
 
 .ProductDetail__min_description {
+  grid-column: 8 / 11;
+  margin-top: 1rem;
 }
 
-.ProductDetail__min_description-location {
+.ProductDetail__min_sold_quantity {
+  margin-top: 1rem;
+  font-size: 14px;
+}
+
+.ProductDetail__min_title {
+  margin-top: 1rem;
+  font-size: 24px;
+  font-weight: 500;
+}
+
+.ProductDetail__min_price {
+  margin-top: 1rem;
+  font-size: 46px;
+  font-weight: 500;
 }
 
 .ProductDetail__description {
+  grid-column: 1 / 11;
 }

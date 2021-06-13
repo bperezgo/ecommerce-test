@@ -35,29 +35,33 @@ export const ProductDetail = () => {
     condition = '',
   } = product;
   return (
-    <div className="Products__container">
+    <div className="Products__container ProductDetail">
       <Breadcrumb categories={['value1', 'value2']} />
       <div className="Products__modal">
-        {picture && (
-          <div className="ProductDetail_img_block">
-            <img
-              className="Globals__container_img"
-              src={picture}
-              alt={itemId}
-            />
+        <div className="ProductDetail__container">
+          {picture && (
+            <div className="ProductDetail_img_block">
+              <img
+                className="Globals__container_img"
+                src={picture}
+                alt={itemId}
+              />
+            </div>
+          )}
+          <div className="ProductDetail__min_description">
+            <p className="ProductDetail__min_sold_quantity">
+              {condition} - {sold_quantity} vendidas
+            </p>
+            <p className="ProductDetail__min_title">{title}</p>
+            <p className="ProductDetail__min_price">
+              {price && formatPrice(price.amount, price.currency)}
+            </p>
+            <Button message="comprar" />
           </div>
-        )}
-        <div className="ProductDetail__min_description">
-          <p>
-            {condition} - {sold_quantity} vendidas
-          </p>
-          <p>{title}</p>
-          <p>{price && formatPrice(price.amount, price.currency)}</p>
-          <Button message="comprar" />
-        </div>
-        <div className="ProductDetail__description">
-          <p>Descripción del producto</p>
-          <p>{description}</p>
+          <div className="ProductDetail__description">
+            <p>Descripción del producto</p>
+            <p>{description}</p>
+          </div>
         </div>
       </div>
     </div>
