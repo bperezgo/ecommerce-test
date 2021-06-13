@@ -4,4 +4,6 @@ type ButtonProps = {
   message: string;
 };
 
-export const Button = ({ message }: ButtonProps) => <button>{message}</button>;
+export const Button = ({ message }: ButtonProps) => (
+  <button className="Button Button_width Button_margin">{message}</button>
+);
