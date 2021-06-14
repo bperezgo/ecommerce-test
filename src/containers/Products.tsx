@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useAsync } from '../hooks/useAsync';
 import { useHistory } from 'react-router-dom';
-import { Product } from '../components/Products/product';
 import { Breadcrumb } from '../components/Breadcrumb';
 import fetchApi from '../services/fetchApi';
 import { ProductList } from '../components/Products/ProductList';
