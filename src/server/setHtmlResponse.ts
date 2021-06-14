@@ -7,6 +7,7 @@ export const setHtmlResponse = (
   const mainStyles = hashManifest
     ? hashManifest['main.css']
     : '/assets/styles.css';
+  const vendorsBuild = hashManifest ? hashManifest['vendors.js'] : '/vendors.js';
   return `
   <!DOCTYPE html>
   <html lang="en">
@@ -20,6 +21,7 @@ export const setHtmlResponse = (
     <body>
       <div id="app">${html}</div>
       <script src="${mainBuild}" type="text/javascript" ></script>
+      <script async src="${vendorsBuild}" type="text/javascript" ></script>
     </body>
   </html>
   `;

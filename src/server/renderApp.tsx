@@ -12,7 +12,6 @@ export const renderApp = (req: Express.Request, res: Response) => {
       {renderRoutes(serverRoutes)}
     </StaticRouter>
   );
-  console.log((req as any).url);
   const hashManifest = (req as any).hashManifest;
   res.send(setHtmlResponse(html, {}, hashManifest));
 };

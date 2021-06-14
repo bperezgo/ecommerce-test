@@ -1,13 +1,15 @@
-import { resolve, join } from 'path';
-import MiniCssExtractPlugin from 'mini-css-extract-plugin';
-import { CleanWebpackPlugin } from 'clean-webpack-plugin';
-import {
+const path = require('path');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const {
   HotModuleReplacementPlugin,
   DefinePlugin,
   SourceMapDevToolPlugin,
-} from 'webpack';
-import { moduleResolve } from './shared.config';
-import ImageMinimizerPlugin from 'image-minimizer-webpack-plugin';
+} = require('webpack');
+const { moduleResolve } = require('./shared.config');
+const ImageMinimizerPlugin = require('image-minimizer-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 
 const config = {
   entry: [
@@ -20,7 +22,7 @@ const config = {
   },
   output: {
     filename: 'bundle.js',
-    path: resolve(__dirname, 'dist'),
+    path: path.resolve(__dirname, 'dist'),
     publicPath: '/',
   },
   devtool: 'eval-source-map',
@@ -36,8 +38,8 @@ const config = {
       {
         test: /.tsx?$/,
         use: [{ loader: 'ts-loader', options: { happyPackMode: true } }],
-        exclude: resolve(process.cwd(), 'node_modules'),
-        include: resolve(process.cwd(), 'src'),
+        exclude: path.resolve(process.cwd(), 'node_modules'),
+        include: path.resolve(process.cwd(), 'src'),
       },
       {
         test: /\.(s?)css$/,
@@ -81,8 +83,27 @@ const config = {
   ],
   devServer: {
     historyApiFallback: true,
-    contentBase: join(__dirname, 'dist'),
+    contentBase: path.join(__dirname, 'dist'),
     hot: true,
+  },
+  optimization: {
+    minimize: true,
+    minimizer: [new CssMinimizerPlugin(), new TerserPlugin()],
+    splitChunks: {
+      chunks: 'all',
+      cacheGroups: {
+        default: false,
+        vendors: {
+          name: 'vendors',
+          chunks: 'all',
+          reuseExistingChunk: true,
+          priority: 1,
+          filename: 'assets/vendors.js',
+          enforce: true,
+          test: /[\\/]node_modules[\\/]/,
+        },
+      },
+    },
   },
 };
 

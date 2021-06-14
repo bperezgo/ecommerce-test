@@ -7,6 +7,7 @@ const ImageMinimizerPlugin = require('image-minimizer-webpack-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
 const { WebpackManifestPlugin } = require('webpack-manifest-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 
 const dotenv = require('dotenv');
 
@@ -18,7 +19,7 @@ const config = {
     ...moduleResolve,
   },
   output: {
-    filename: 'assets/bundle-[hash].js',
+    filename: 'assets/bundle-[fullhash].js',
     path: path.resolve(__dirname, 'dist'),
     publicPath: '/',
   },
@@ -87,7 +88,22 @@ const config = {
 
   optimization: {
     minimize: true,
-    minimizer: [new TerserPlugin()],
+    minimizer: [new CssMinimizerPlugin(), new TerserPlugin()],
+    splitChunks: {
+      chunks: 'all',
+      cacheGroups: {
+        default: false,
+        vendors: {
+          name: 'vendors',
+          chunks: 'all',
+          reuseExistingChunk: true,
+          priority: 1,
+          filename: 'assets/vendors-[chunkhash].js',
+          enforce: true,
+          test: /[\\/]node_modules[\\/]/,
+        },
+      },
+    },
   },
 };
 
