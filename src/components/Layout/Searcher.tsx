@@ -6,7 +6,7 @@ export const Searcher = () => {
   const history = useHistory();
   const [value, setValue] = useState('');
   const handleClick = () => {
-    history.push(`/items?search=${value}`, { searcherValue: value });
+    history.push(`/items?search=${value}`);
   };
 
   const handleChange = ({ target }: ChangeEvent<HTMLInputElement>) => {
