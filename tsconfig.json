@@ -15,7 +15,7 @@
     "esModuleInterop": true,
     "noEmit": false,
     "paths": {
-      "*": ["src/types/*"],
+      "*": ["node_modules/*", "src/types/*"],
       "@assets/*": ["./src/assets/*"],
       "@components/*": ["./src/components/*"],
       "@containers/*": ["./src/containers/*"],

@@ -6,11 +6,13 @@ import { renderToString } from 'react-dom/server';
 import { renderRoutes } from 'react-router-config';
 import { StaticRouter } from 'react-router-dom';
 
-export const renderApp = (req: Request, res: Response) => {
+export const renderApp = (req: Express.Request, res: Response) => {
   const html = renderToString(
-    <StaticRouter location={req.url} context={{}}>
+    <StaticRouter location={(req as any).url} context={{}}>
       {renderRoutes(serverRoutes)}
     </StaticRouter>
   );
-  res.send(setHtmlResponse(html, {}, false));
+  console.log((req as any).url);
+  const hashManifest = (req as any).hashManifest;
+  res.send(setHtmlResponse(html, {}, hashManifest));
 };

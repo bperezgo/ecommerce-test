@@ -1,5 +1,6 @@
 declare module Express {
   export interface Request {
-    hashManifest?: string;
+    hashManifest: any;
+    url: string;
   }
 }

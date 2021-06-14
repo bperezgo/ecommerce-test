@@ -1,8 +1,9 @@
 export const setHtmlResponse = (
   html: string,
   preloadedState: any,
-  hasManifest: any
+  hashManifest: any
 ) => {
+  console.log(hashManifest);
   return `
   <!DOCTYPE html>
   <html lang="en">

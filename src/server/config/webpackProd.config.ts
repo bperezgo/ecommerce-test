@@ -4,7 +4,8 @@ import getManifest from '../getManifest';
 
 const webpackProdConfig = (app: Application) => {
   app.use((req, res, next) => {
-    (req as any).hashManifest = getManifest();
+    const manifest = getManifest();
+    (req as any).hashManifest = manifest;
     next();
   });
   app.use(helmet());
