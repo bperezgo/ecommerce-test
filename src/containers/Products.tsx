@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
-import { useAsync } from '../hooks/useAsync';
-import { useHistory } from 'react-router-dom';
+import { useGetProducts } from '../hooks/';
+import { useLocation } from 'react-router-dom';
 import { Breadcrumb } from '../components/Breadcrumb';
 import fetchApi from '../services/fetchApi';
 import { ProductList } from '../components/Products/ProductList';
@@ -13,11 +13,11 @@ interface IProductsResponse {
 }
 
 const getProducts = async (
-  state: any
+  searcherValue: string | null
 ): Promise<IProductsResponse | undefined> => {
-  if (state.searcherValue) {
+  if (searcherValue) {
     const { data } = await fetchApi.get<ProductsResponse.Data>(
-      `/api/items?q=${state.searcherValue}`
+      `/api/items?q=${searcherValue}`
     );
     return { categories: data.categories, products: data.items };
   }
@@ -26,20 +26,10 @@ const getProducts = async (
 
 export const Products = () => {
   const value = useContext(context);
-  const history = useHistory();
+  const { search } = useLocation();
+  const searchValue = new URLSearchParams(search).get('search');
 
-  const {
-    location: { state },
-  } = history;
-
-  const asyncParams = {
-    asyncFunc: getProducts,
-    immediate: true,
-    funcParams: state,
-    initialData: { categories: [], products: [] },
-  };
-
-  const { data } = useAsync<IProductsResponse, any>(asyncParams);
+  const { data } = useGetProducts(searchValue);
 
   const { categories, products } = data;
   value.categories = [...categories];
