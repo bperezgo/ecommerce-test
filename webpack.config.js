@@ -6,6 +6,7 @@ const { moduleResolve } = require('./shared.config');
 const ImageMinimizerPlugin = require('image-minimizer-webpack-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
 const { WebpackManifestPlugin } = require('webpack-manifest-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
 
 const dotenv = require('dotenv');
 
@@ -17,9 +18,9 @@ const config = {
     ...moduleResolve,
   },
   output: {
-    filename: '[name]-bundle.js',
+    filename: 'assets/bundle-[hash].js',
     path: path.resolve(__dirname, 'dist'),
-    publicPath: './',
+    publicPath: '/',
   },
   module: {
     rules: [
@@ -52,7 +53,7 @@ const config = {
           {
             loader: 'file-loader',
             options: {
-              name: 'assets/[name][hash].[ext]',
+              name: 'assets/[name]-[fullhash].[ext]',
             },
           },
         ],
@@ -61,11 +62,11 @@ const config = {
   },
   plugins: [
     new DefinePlugin({
-      'process.env.NODE_ENV': 'production',
+      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
       'process.env.SERVER_HOST': JSON.stringify(process.env.SERVER_HOST),
     }),
     new MiniCssExtractPlugin({
-      filename: 'assets/styles.css',
+      filename: 'assets/styles-[fullhash].css',
     }),
     new CleanWebpackPlugin(),
     new ImageMinimizerPlugin({
@@ -75,13 +76,18 @@ const config = {
     }),
     new CompressionPlugin({
       test: /\.js$|\.css$/,
-      filename: '[path].gz',
+      filename: '[path][base].gz',
     }),
     new WebpackManifestPlugin(),
   ],
   devServer: {
     historyApiFallback: true,
     contentBase: path.join(__dirname, 'dist'),
+  },
+
+  optimization: {
+    minimize: true,
+    minimizer: [new TerserPlugin()],
   },
 };
 

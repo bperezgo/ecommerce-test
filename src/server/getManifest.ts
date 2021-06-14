@@ -3,9 +3,8 @@ import { join } from 'path';
 
 const getManifest = () => {
   try {
-    return JSON.parse(
-      fs.readFileSync(join('../../', '/public/manifest.json'), 'utf8')
-    );
+    const route = join(__dirname, '../../dist/manifest.json');
+    return JSON.parse(fs.readFileSync(route, 'utf8'));
   } catch (error) {
     return {
       'main.css': '/assets/app.css',

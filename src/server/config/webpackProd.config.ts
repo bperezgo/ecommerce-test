@@ -1,8 +1,10 @@
-import { Application } from 'express';
+import { join } from 'path';
+import express, { Application } from 'express';
 import helmet from 'helmet';
 import getManifest from '../getManifest';
 
 const webpackProdConfig = (app: Application) => {
+  app.use(express.static(join(__dirname, '../../../dist')));
   app.use((req, res, next) => {
     const manifest = getManifest();
     (req as any).hashManifest = manifest;

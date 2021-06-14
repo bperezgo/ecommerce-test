@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "webpack --mode production --config webpack.config.js",
-    "start": "ts-node src/server/server.ts",
+    "start": "nodemon src/server/server.ts",
     "lint": "eslint src --fix",
     "dev": "nodemon src/server/server.ts",
     "dev:inspect": "nodemon --inspect src/server/server.ts"
@@ -72,6 +72,7 @@
     "prettier": "^2.3.1",
     "sass-loader": "^12.0.0",
     "style-loader": "^2.0.0",
+    "terser-webpack-plugin": "^5.1.3",
     "ts-node": "^10.0.0",
     "typescript": "^4.3.2",
     "url-loader": "^4.1.1",
