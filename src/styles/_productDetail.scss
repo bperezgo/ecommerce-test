@@ -38,4 +38,17 @@
 
 .ProductDetail__description {
   grid-column: 1 / 11;
+  margin: 2rem 1rem;
+}
+
+.ProductDetail__description_title {
+  font-size: 28px;
+  margin: 0;
+}
+
+.ProductDetail__description_content {
+  font-size: 1rem;
+  margin: 1rem 0;
+  font-weight: 200;
+  width: 60%;
 }

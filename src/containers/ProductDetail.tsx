@@ -59,8 +59,10 @@ export const ProductDetail = () => {
             <Button message="comprar" />
           </div>
           <div className="ProductDetail__description">
-            <p>Descripción del producto</p>
-            <p>{description}</p>
+            <p className="ProductDetail__description_title">
+              Descripción del producto
+            </p>
+            <p className="ProductDetail__description_content">{description}</p>
           </div>
         </div>
       </div>
