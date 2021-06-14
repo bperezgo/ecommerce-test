@@ -6,6 +6,8 @@
   box-shadow: 0 1px 0 rgba(0, 0, 0, 0.09);
   margin: 0 1rem;
   cursor: pointer;
+  // For intersection Observer
+  min-height: 200px;
 }
 
 .Product__img_block {
