@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useAsync } from '../hooks/useAsync';
 import { useHistory } from 'react-router-dom';
 import { Breadcrumb } from '../components/Breadcrumb';
 import fetchApi from '../services/fetchApi';
 import { ProductList } from '../components/Products/ProductList';
 import { ProductsResponse } from '../@types';
+import context from '../context';
 
 interface IProductsResponse {
   categories: ProductsResponse.Category[];
@@ -24,6 +25,7 @@ const getProducts = async (
 };
 
 export const Products = () => {
+  const value = useContext(context);
   const history = useHistory();
 
   const {
@@ -40,6 +42,7 @@ export const Products = () => {
   const { data } = useAsync<IProductsResponse, any>(asyncParams);
 
   const { categories, products } = data;
+  value.categories = [...categories];
   return (
     <div className="Products__container">
       <Breadcrumb categories={categories} />

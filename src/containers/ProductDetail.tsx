@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useAsync } from '../hooks/useAsync';
 import { Breadcrumb } from '../components/Breadcrumb';
 import { Button } from '../components/Button';
@@ -6,6 +6,7 @@ import { useRouteMatch } from 'react-router-dom';
 import fetchApi from '../services/fetchApi';
 import { ProductDetailResponse } from '../@types';
 import { formatPrice } from '../utils/front';
+import context from '../context';
 
 const getItemInfo = async (
   itemId: string | undefined
@@ -20,6 +21,7 @@ const getItemInfo = async (
 };
 
 export const ProductDetail = () => {
+  const value = useContext(context);
   const match = useRouteMatch<{ itemId?: string }>();
   const {
     params: { itemId },
@@ -46,7 +48,7 @@ export const ProductDetail = () => {
   } = product;
   return (
     <div className="Products__container ProductDetail">
-      <Breadcrumb categories={['value1', 'value2']} />
+      <Breadcrumb categories={value.categories} />
       <div className="Products__modal">
         <div className="ProductDetail__container">
           {picture && (

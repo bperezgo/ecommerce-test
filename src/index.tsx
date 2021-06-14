@@ -5,13 +5,16 @@ import ReactDOM from 'react-dom';
 import { Router } from 'react-router';
 import { App } from './routes/App';
 import { createBrowserHistory } from 'history';
+import Context from './context';
 import './images';
 
 const history = createBrowserHistory();
 
 ReactDOM.render(
-  <Router history={history}>
-    <App />
-  </Router>,
+  <Context.Provider value={{ categories: [] }}>
+    <Router history={history}>
+      <App />
+    </Router>
+  </Context.Provider>,
   document.getElementById('app')
 );
