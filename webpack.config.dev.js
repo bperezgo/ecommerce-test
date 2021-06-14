@@ -21,7 +21,7 @@ const config = {
     ...moduleResolve,
   },
   output: {
-    filename: 'bundle.js',
+    filename: 'assets/bundle.js',
     path: path.resolve(__dirname, 'dist'),
     publicPath: '/',
   },
@@ -51,16 +51,20 @@ const config = {
           'sass-loader',
         ],
       },
+      // {
+      //   test: /\.(png|gif|jpe?g)$/,
+      //   use: [
+      //     {
+      //       loader: 'file-loader',
+      //       options: {
+      //         name: 'assets/[name].[ext]',
+      //       },
+      //     },
+      //   ],
+      // },
       {
-        test: /\.(png|gif|jpe?g)$/,
-        use: [
-          {
-            loader: 'file-loader',
-            options: {
-              name: 'assets/[name].[ext]',
-            },
-          },
-        ],
+        test: /\.(png|jpg)$/,
+        type: 'asset', // Podemos trabajar las importaciones de archivos directamente
       },
     ],
   },

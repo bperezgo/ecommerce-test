@@ -21,6 +21,7 @@ const config = {
   output: {
     filename: 'assets/bundle-[fullhash].js',
     path: path.resolve(__dirname, 'dist'),
+    chunkFilename: 'assets/bundle-[fullhash].js',
     publicPath: '/',
   },
   module: {
@@ -48,16 +49,20 @@ const config = {
           'sass-loader',
         ],
       },
+      // {
+      //   test: /\.(png|gif|jpe?g)$/,
+      //   use: [
+      //     {
+      //       loader: 'file-loader',
+      //       options: {
+      //         name: 'assets/[name]-[fullhash].[ext]',
+      //       },
+      //     },
+      //   ],
+      // },
       {
-        test: /\.(png|gif|jpe?g)$/,
-        use: [
-          {
-            loader: 'file-loader',
-            options: {
-              name: 'assets/[name]-[fullhash].[ext]',
-            },
-          },
-        ],
+        test: /\.(png|jpe?g)$/,
+        type: 'asset/resource', // Podemos trabajar las importaciones de archivos directamente
       },
     ],
   },
@@ -93,6 +98,15 @@ const config = {
       chunks: 'all',
       cacheGroups: {
         default: false,
+        commons: {
+          test: /[\\/]node_modules[\\/](react|react-dom)[\\/]/,
+          chunks: 'all',
+          name: 'commons',
+          filename: 'assets/common-[chunkhash].js',
+          reuseExistingChunk: true,
+          enforce: true,
+          priority: 20,
+        },
         vendors: {
           name: 'vendors',
           chunks: 'all',

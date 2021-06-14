@@ -3,6 +3,7 @@ import { useHistory } from 'react-router-dom';
 import { ProductsResponse } from '../../@types';
 import { formatPrice } from '../../utils/front';
 import { useViewIntersection } from '../../hooks';
+import shipping from '@assets/images/ic_shipping.png';
 
 export const Product = ({
   id,
@@ -30,9 +31,7 @@ export const Product = ({
           <div className="Product__description">
             <div className="Product__price">
               <p>{formatPrice(price.amount, price.currency)}</p>
-              {free_shipping && (
-                <img src={'assets/ic_shipping.png'} alt="shipping" />
-              )}
+              {free_shipping && <img src={shipping} alt="shipping" />}
             </div>
             <p className="Product__title">{title}</p>
             <p className="Product__title">Completo único</p>

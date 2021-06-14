@@ -1,4 +1,5 @@
-import { Express } from 'express';
+import { join } from 'path';
+import express, { Express } from 'express';
 import webpack from 'webpack';
 import webpackDevMiddleware from 'webpack-dev-middleware';
 import webpackHotMiddleware from 'webpack-hot-middleware';
@@ -17,6 +18,7 @@ const webpackDevConfig = (app: Express) => {
     publicPath: webpackConfig.output?.publicPath as string,
     serverSideRender: true,
   };
+  app.use(express.static(join(__dirname, '../../../dist')));
   app.use(webpackDevMiddleware(compiler, serverConfig));
   app.use(
     webpackHotMiddleware(compiler, {
