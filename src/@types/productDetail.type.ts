@@ -27,4 +27,8 @@ export declare namespace ProductDetailResponse {
     // Notice item is only an object
     item: Item;
   }
+
+  export interface Response {
+    data: Data;
+  }
 }
