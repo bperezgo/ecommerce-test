@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React from 'react';
 import { useHistory } from 'react-router-dom';
 import { ProductsResponse } from '../../@types';
 import { formatPrice } from '../../utils/front';
@@ -15,26 +15,7 @@ export const Product = ({
   const handleClick = (id: string) => {
     history.push(`/items/${id}`);
   };
-  const ref = useRef<HTMLDivElement | null>(null);
-  const [show, setShow] = useState(false);
-  useEffect(() => {
-    Promise.resolve(
-      typeof window.IntersectionObserver !== undefined
-        ? window.IntersectionObserver
-        : require('intersection-observer')
-    ).then(() => {
-      const observer = new window.IntersectionObserver((entries) => {
-        const { isIntersecting } = entries[0];
-        if (isIntersecting) {
-          setShow(true);
-          observer.disconnect();
-        }
-      });
-      if (ref.current) {
-        observer.observe(ref.current);
-      }
-    });
-  }, [ref]);
+  const { ref, show } = useViewIntersection<HTMLDivElement | null>(null);
   return (
     <div
       ref={ref}
