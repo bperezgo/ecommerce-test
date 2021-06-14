@@ -14,21 +14,22 @@ const getProducts = async (
     const { data } = await fetchApi.get<ProductsResponse.Data>(
       `/api/items?q=${searcherValue}`
     );
-    debugger;
     return { categories: data.categories, products: data.items };
   }
   return;
 };
 
-export const useGetProducts = (funcParams: string | null) => {
+export const useGetProducts = (
+  funcParams: string | null,
+  immediate: boolean
+) => {
   const asyncParams = {
     asyncFunc: getProducts,
-    immediate: true,
+    immediate,
     funcParams,
     initialData: { categories: [], products: [] },
   };
 
-  const { data } = useAsync<IProductsResponse, any>(asyncParams);
-  debugger;
-  return { data };
+  const { data, execute } = useAsync<IProductsResponse, any>(asyncParams);
+  return { data, execute };
 };

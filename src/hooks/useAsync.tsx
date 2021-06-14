@@ -33,7 +33,9 @@ interface IUseAsyncProps<S, T> {
 }
 
 export const useAsync = <S, T>(props: IUseAsyncProps<S, T>) => {
-  const { asyncFunc, immediate, funcParams, initialData } = { ...props };
+  const { asyncFunc, immediate, funcParams, initialData } = {
+    ...props,
+  };
   const [loading, setLoading] = useState(immediate);
   const [data, setData] = useState<S>(initialData);
   const [error, setError] = useState(null);

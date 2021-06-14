@@ -1,12 +1,19 @@
-import React, { Fragment } from 'react';
-import { Link } from 'react-router-dom';
+import React, { Fragment, useContext } from 'react';
+import { useHistory } from 'react-router-dom';
 import { breadcrumbCategoryLink } from '../../utils/front';
+import context from '../../context';
 
 type BreadcrumbProps = {
   categories: string[];
 };
 
 export const Breadcrumb = ({ categories }: BreadcrumbProps) => {
+  const history = useHistory();
+  const globalState = useContext(context);
+  const handleClick = (category: string) => {
+    globalState.search = true;
+    history.push(breadcrumbCategoryLink(category));
+  };
   return (
     <div className="Breadcrumb__block">
       {categories.map((category, idx) => {
@@ -15,9 +22,12 @@ export const Breadcrumb = ({ categories }: BreadcrumbProps) => {
         if (idx < length - 1) decorator = true;
         return (
           <Fragment key={idx}>
-            <Link to={breadcrumbCategoryLink(category)}>
-              <span>{category}</span>
-            </Link>
+            <span
+              className="Breadcrumb__span"
+              onClick={() => handleClick(category)}
+            >
+              {category}
+            </span>
             {decorator && <span>{' > '}</span>}
           </Fragment>
         );

@@ -1,18 +1,14 @@
 .Breadcrumb__block {
   grid-column: 2 / 12;
   grid-row: 1;
+  margin: 1rem 0;
 }
 
 .Breadcrumb__block > span {
   font-size: $breadcrumb-font-size;
   color: $light-gray;
-  margin: 1rem 0;
 }
 
-.Breadcrumb__block > a {
-  display: inline-block;
-  text-decoration: none;
-  font-size: $breadcrumb-font-size;
-  color: $light-gray;
-  margin: 1rem 0;
+.Breadcrumb__block .Breadcrumb__span {
+  cursor: pointer;
 }
