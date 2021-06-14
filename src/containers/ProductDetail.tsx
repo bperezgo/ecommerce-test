@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
+import { useAsync } from '../hooks/useAsync';
 import { Breadcrumb } from '../components/Breadcrumb';
 import { Button } from '../components/Button';
 import { useRouteMatch } from 'react-router-dom';
@@ -6,26 +7,35 @@ import fetchApi from '../services/fetchApi';
 import { ProductDetailResponse } from '../@types';
 import { formatPrice } from '../utils/front';
 
+const getItemInfo = async (
+  itemId: string | undefined
+): Promise<ProductDetailResponse.Item | undefined> => {
+  if (itemId) {
+    const { data } = await fetchApi.get<ProductDetailResponse.Data>(
+      `/api/items/${itemId}`
+    );
+    return data.item;
+  }
+  return;
+};
+
 export const ProductDetail = () => {
-  const [product, setProduct] = useState<Partial<ProductDetailResponse.Item>>(
-    {}
-  );
   const match = useRouteMatch<{ itemId?: string }>();
   const {
     params: { itemId },
   } = match;
 
-  useEffect(() => {
-    const getItemInfo = async () => {
-      if (itemId) {
-        const { data } = await fetchApi.get<ProductDetailResponse.Data>(
-          `/api/items/${itemId}`
-        );
-        setProduct(data.item);
-      }
-    };
-    getItemInfo();
-  });
+  const useAsyncParams = {
+    asyncFunc: getItemInfo,
+    immediate: true,
+    funcParams: itemId,
+    initialData: {} as ProductDetailResponse.Item,
+  };
+
+  const { data: product } = useAsync<ProductDetailResponse.Item, any>(
+    useAsyncParams
+  );
+
   const {
     picture,
     description,
