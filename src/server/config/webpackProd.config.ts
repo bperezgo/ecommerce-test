@@ -10,7 +10,16 @@ const webpackProdConfig = (app: Application) => {
     (req as any).hashManifest = manifest;
     next();
   });
-  app.use(helmet());
+  app.use(
+    helmet({
+      contentSecurityPolicy: {
+        directives: {
+          ...helmet.contentSecurityPolicy.getDefaultDirectives(),
+          'img-src': ["'self'", 'http2.mlstatic.com'],
+        },
+      },
+    })
+  );
   app.use(helmet.permittedCrossDomainPolicies());
   app.disable('x-powered-by');
 };
