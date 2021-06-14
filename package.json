@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "webpack --mode production --config webpack.config.js",
-    "start": "ts-node dist/main-bundle.js",
+    "start": "ts-node src/server/server.ts",
     "lint": "eslint src --fix",
     "dev": "nodemon src/server/server.ts",
     "dev:inspect": "nodemon --inspect src/server/server.ts"

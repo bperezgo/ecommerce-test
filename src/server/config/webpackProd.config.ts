@@ -3,8 +3,8 @@ import helmet from 'helmet';
 import getManifest from '../getManifest';
 
 const webpackProdConfig = (app: Application) => {
-  app.use((req: Express.Request, res, next) => {
-    req.hashManifest = getManifest();
+  app.use((req, res, next) => {
+    (req as any).hashManifest = getManifest();
     next();
   });
   app.use(helmet());
