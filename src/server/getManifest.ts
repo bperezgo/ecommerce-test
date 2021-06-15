@@ -3,7 +3,7 @@ import { join } from 'path';
 
 const getManifest = () => {
   try {
-    const route = join(__dirname, '../../dist/manifest.json');
+    const route = join(__dirname, '../../public/manifest.json');
     return JSON.parse(fs.readFileSync(route, 'utf8'));
   } catch (error) {
     return {

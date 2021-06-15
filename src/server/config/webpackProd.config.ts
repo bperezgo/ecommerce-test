@@ -4,7 +4,7 @@ import helmet from 'helmet';
 import getManifest from '../getManifest';
 
 const webpackProdConfig = (app: Application) => {
-  app.use(express.static(join(__dirname, '../../../dist')));
+  app.use(express.static(join(__dirname, '../../../public')));
   app.use((req, res, next) => {
     const manifest = getManifest();
     (req as any).hashManifest = manifest;

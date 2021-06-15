@@ -22,7 +22,7 @@ const config = {
   },
   output: {
     filename: 'assets/bundle.js',
-    path: path.resolve(__dirname, 'dist'),
+    path: path.resolve(__dirname, 'public'),
     publicPath: '/',
   },
   devtool: 'eval-source-map',
@@ -87,7 +87,7 @@ const config = {
   ],
   devServer: {
     historyApiFallback: true,
-    contentBase: path.join(__dirname, 'dist'),
+    contentBase: path.join(__dirname, 'public'),
     hot: true,
   },
   optimization: {

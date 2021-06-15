@@ -18,7 +18,7 @@ const webpackDevConfig = (app: Express) => {
     publicPath: webpackConfig.output?.publicPath as string,
     serverSideRender: true,
   };
-  app.use(express.static(join(__dirname, '../../../dist')));
+  app.use(express.static(join(__dirname, '../../../public')));
   app.use(webpackDevMiddleware(compiler, serverConfig));
   app.use(
     webpackHotMiddleware(compiler, {

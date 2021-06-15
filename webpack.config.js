@@ -21,7 +21,7 @@ const config = {
   },
   output: {
     filename: 'assets/bundle-[fullhash].js',
-    path: path.resolve(__dirname, 'dist'),
+    path: path.resolve(__dirname, 'public'),
     chunkFilename: 'assets/bundle-[fullhash].js',
     publicPath: '/',
   },
@@ -106,7 +106,7 @@ const config = {
   ],
   devServer: {
     historyApiFallback: true,
-    contentBase: path.join(__dirname, 'dist'),
+    contentBase: path.join(__dirname, 'public'),
   },
 
   optimization: {
