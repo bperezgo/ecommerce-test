@@ -1,6 +1,6 @@
 import React, { useState, ChangeEvent, KeyboardEvent, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
-import searchLogo from '@assets/images/ic_Search.png';
+import searchLogo from '../../assets/images/ic_Search.png';
 import context from '../../context';
 
 export const Searcher = () => {

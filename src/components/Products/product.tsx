@@ -3,7 +3,6 @@ import { useHistory } from 'react-router-dom';
 import { ProductsResponse } from '../../@types';
 import { formatPrice } from '../../utils/front';
 import { useViewIntersection } from '../../hooks';
-// import shipping from '@assets/images/ic_Shipping.png';
 
 export const Product = ({
   id,
