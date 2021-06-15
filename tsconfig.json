@@ -16,10 +16,10 @@
     "noEmit": false,
     "paths": {
       "*": ["node_modules/*", "src/types/*"],
-      "@assets/*": ["./src/assets/*"],
-      "@components/*": ["./src/components/*"],
-      "@containers/*": ["./src/containers/*"],
-      "@utils/*": ["./src/utils/*"]
+      // "@assets/*": ["./src/assets/*"],
+      // "@components/*": ["./src/components/*"],
+      // "@containers/*": ["./src/containers/*"],
+      // "@utils/*": ["./src/utils/*"]
     },
     "types": ["reflect-metadata", "node"],
     // Ensure that .d.ts files are created by tsc, but not .js files
