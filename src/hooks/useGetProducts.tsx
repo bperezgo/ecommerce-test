@@ -30,6 +30,5 @@ export const useGetProducts = (
     initialData: { categories: [], products: [] },
   };
 
-  const { data, execute } = useAsync<IProductsResponse, any>(asyncParams);
-  return { data, execute };
+  return useAsync<IProductsResponse, any>(asyncParams);
 };

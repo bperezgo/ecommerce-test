@@ -3,6 +3,7 @@ import { useGetProducts } from '../hooks/';
 import { useLocation } from 'react-router-dom';
 import { Breadcrumb } from '../components/Breadcrumb';
 import { ProductList } from '../components/Products/ProductList';
+import { Loading } from '../components/Loading';
 import context from '../context';
 
 export const Products = () => {
@@ -10,7 +11,7 @@ export const Products = () => {
   const { search } = useLocation();
   const searchValue = new URLSearchParams(search).get('search');
   const immediate = true;
-  const { data, execute } = useGetProducts(searchValue, immediate);
+  const { data, execute, loading } = useGetProducts(searchValue, immediate);
 
   useEffect(() => {
     // This useEffect is beacuse when is executed a search, it was not set the new values
@@ -21,6 +22,7 @@ export const Products = () => {
   }, [globalState.search]);
   const { categories, products } = data;
   globalState.categories = [...categories];
+  if (loading) return <Loading />;
   return (
     <div className="Products__container">
       <Breadcrumb categories={categories} />

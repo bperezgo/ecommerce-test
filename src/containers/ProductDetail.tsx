@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { useAsync } from '../hooks/useAsync';
 import { Breadcrumb } from '../components/Breadcrumb';
 import { Button } from '../components/Button';
+import { Loading } from '../components/Loading';
 import { useRouteMatch } from 'react-router-dom';
 import fetchApi from '../services/fetchApi';
 import { ProductDetailResponse } from '../@types';
@@ -34,7 +35,7 @@ export const ProductDetail = () => {
     initialData: {} as ProductDetailResponse.Item,
   };
 
-  const { data: product } = useAsync<ProductDetailResponse.Item, any>(
+  const { data: product, loading } = useAsync<ProductDetailResponse.Item, any>(
     useAsyncParams
   );
 
@@ -46,6 +47,7 @@ export const ProductDetail = () => {
     sold_quantity = '',
     condition = '',
   } = product;
+  if (loading) return <Loading />;
   return (
     <div className="Products__container ProductDetail">
       <Breadcrumb categories={value.categories} />
