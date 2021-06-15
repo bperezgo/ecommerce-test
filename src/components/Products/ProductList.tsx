@@ -1,5 +1,5 @@
 import React from 'react';
-// import { Product } from './Product';
+import { Product } from '../Product';
 import { ProductsResponse } from '../../@types';
 
 type ProductListProps = {
@@ -9,8 +9,7 @@ type ProductListProps = {
 export const ProductList = ({ products }: ProductListProps) => (
   <>
     {products.map((product) => (
-      <div key={product.id}></div>
-      // <Product key={product.id} {...product} />
+      <Product key={product.id} {...product} />
     ))}
   </>
 );
