@@ -8,6 +8,7 @@ const CompressionPlugin = require('compression-webpack-plugin');
 const { WebpackManifestPlugin } = require('webpack-manifest-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
+const RobotstxtPlugin = require('robotstxt-webpack-plugin');
 
 const dotenv = require('dotenv');
 
@@ -67,6 +68,23 @@ const config = {
     ],
   },
   plugins: [
+    new RobotstxtPlugin({
+      policy: [
+        {
+          userAgent: 'Googlebot',
+          allow: '/',
+          disallow: ['/search'],
+          crawlDelay: 2,
+        },
+        {
+          userAgent: '*',
+          allow: '/',
+          disallow: '/search',
+          crawlDelay: 10,
+          cleanParam: 'ref /articles/',
+        },
+      ],
+    }),
     new DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
       'process.env.SERVER_HOST': JSON.stringify(process.env.SERVER_HOST),

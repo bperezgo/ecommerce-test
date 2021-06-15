@@ -7,7 +7,6 @@ import { App } from './routes/App';
 import { createBrowserHistory } from 'history';
 import context from './context';
 import { initialState } from './state/initialState';
-import './images';
 
 const history = createBrowserHistory();
 
