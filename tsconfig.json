@@ -27,5 +27,5 @@
     // Ensure that Babel can safely transpile files in the TypeScript project
     // "isolatedModules": true
   },
-  "include": ["src/**/*", "src/**/*.json"]
+  "include": ["src/**/*.tsx", "src/**/*.ts", "src/**/*.json"]
 }
