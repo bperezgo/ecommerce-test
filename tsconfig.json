@@ -7,8 +7,9 @@
     "jsx": "react",
     "noImplicitAny": true,
     "allowSyntheticDefaultImports": true,
-    "moduleResolution": "classic",
+    "moduleResolution": "node",
     "baseUrl": "./",
+    "sourceMap": true,
     "allowJs": true,
     "strict": true,
     "resolveJsonModule": true,
@@ -22,7 +23,7 @@
     },
     "types": ["reflect-metadata", "node"],
     // Ensure that .d.ts files are created by tsc, but not .js files
-    "declaration": true,
+    "declaration": true
     // "emitDeclarationOnly": true
     // Ensure that Babel can safely transpile files in the TypeScript project
     // "isolatedModules": true
