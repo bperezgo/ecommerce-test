@@ -34,11 +34,16 @@ const config = {
           loader: 'babel-loader',
         },
       },
+      // {
+      //   test: /.tsx?$/,
+      //   use: [{ loader: 'ts-loader', options: { happyPackMode: true } }],
+      //   exclude: path.resolve(process.cwd(), 'node_modules'),
+      //   include: path.resolve(process.cwd(), 'src'),
+      // },
       {
-        test: /.tsx?$/,
-        use: [{ loader: 'ts-loader', options: { happyPackMode: true } }],
-        exclude: path.resolve(process.cwd(), 'node_modules'),
-        include: path.resolve(process.cwd(), 'src'),
+        test: /\.tsx?$/,
+        use: 'ts-loader',
+        exclude: /node_modules/,
       },
       {
         test: /\.(s?)css$/,
