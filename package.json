@@ -3,10 +3,17 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "engines" : { "node" : "14.16.x", "yarn": "1.x" },
+  "engines": {
+    "node": "14.16.x",
+    "yarn": "1.x"
+  },
   "scripts": {
+    "build-ts": "tsc",
+    "postinstall": "npm run build-ts",
+    "start": "npm run serve",
+    "serve": "node dist/server.js",
+    "watch-node": "nodemon dist/server.js",
     "build": "webpack --mode production --config webpack.config.js",
-    "start": "nodemon src/server/server.ts",
     "lint": "eslint src --fix",
     "dev": "nodemon src/server/server.ts",
     "dev:inspect": "nodemon --inspect src/server/server.ts"
